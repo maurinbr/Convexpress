@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carte de France avec Leaflet.js</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 800px; }
+        #cities-list { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id="cities-list"></div>
+<div id="legend"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var map = L.map('map').setView([46.603354, 1.888334], 6); // Coordonnées du centre de la France
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var departIcon = L.icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var arriveeIcon = L.icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    function randomizeMarkerLocation(location) {
+        return [location[0] + (Math.random() - 0.5) / 100, location[1] + (Math.random() - 0.5) / 100];
+    }
+
+    // Charger les données CSV des villes de départ et d'arrivée
+    fetch('Classeur1.csv')
+        .then(response => response.text())
+        .then(data => {
+            // Convertir le contenu CSV en tableau de lignes
+            var rows = data.trim().split('\n');
+            // Parcourir chaque ligne (sauf l'en-tête)
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i].split(';');
+                var depart = row[2].trim();
+                var arrivee = row[3].trim();
+                var departLatitude = parseFloat(row[13].replace(',', '.'));
+                var departLongitude = parseFloat(row[14].replace(',', '.'));
+                var arriveeLatitude = parseFloat(row[16].replace(',', '.'));
+                var arriveeLongitude = parseFloat(row[17].replace(',', '.'));
+
+                var randomDepartLocation = randomizeMarkerLocation([departLatitude, departLongitude]);
+                var randomArriveeLocation = randomizeMarkerLocation([arriveeLatitude, arriveeLongitude]);
+
+                // Créer un marqueur pour la ville de départ
+                L.marker(randomDepartLocation, { icon: departIcon }).addTo(map)
+                    .bindPopup(depart + " (Départ)");
+
+                // Ajouter la ville de départ à la liste des villes
+                var citiesList = document.getElementById('cities-list');
+                var cityListItem = document.createElement('div');
+                cityListItem.textContent = depart + " (Départ)";
+                citiesList.appendChild(cityListItem);
+
+                // Créer un marqueur pour la ville d'arrivée
+                L.marker(randomArriveeLocation, { icon: arriveeIcon }).addTo(map)
+                    .bindPopup(arrivee + " (Arrivée)");
+
+                // Ajouter la ville d'arrivée à la liste des villes
+                var cityListItem = document.createElement('div');
+                cityListItem.textContent = arrivee + " (Arrivée)";
+                citiesList.appendChild(cityListItem);
+
+                // Créer une ligne entre les points de départ et d'arrivée
+                var polyline = L.polyline([randomDepartLocation, randomArriveeLocation], { color: 'black' }).addTo(map);
+            }
+
+            // Légende
+            var legend = L.control({ position: 'bottomright' });
+
+            legend.onAdd = function(map) {
+                var div = L.DomUtil.create('div', 'legend');
+                div.innerHTML += '<img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png"> Départ<br>';
+                div.innerHTML += '<img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png"> Arrivée<br>';
+                return div;
+            };
+
+            legend.addTo(map);
+        });
+</script>
+
+</body>
+</html>
