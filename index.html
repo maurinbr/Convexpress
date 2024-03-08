@@ -23,6 +23,7 @@
         <label for="date">Date:</label>
         <input type="date" id="date" name="date">
         <button onclick="filterMarkers()">Filtrer</button>
+        <button onclick="clearpins()">Effacer</button>
     </div>
     <div id="map"></div>
 <div id="cities-list"></div>
@@ -59,10 +60,12 @@
     });
 
     function randomizeMarkerLocation(location) {
-        return [location[0] + (Math.random() - 0.5) / 100, location[1] + (Math.random() - 0.5) / 100];
-    }
+        return [location[0] + (Math.random() - 0.5) / 200, location[1] + (Math.random() - 0.5) / 200];
+    };
     var markersLayer = L.layerGroup().addTo(map);
-    function filterMarkers() {
+
+    function clearpins() {
+        console.log("on efface")
         markersLayer.clearLayers();
                 // Effacer tous les marqueurs de la carte
         map.eachLayer(function (layer) {
@@ -70,6 +73,13 @@
                 map.removeLayer(layer);
             }
         });
+    };
+    
+    var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+    var colorIndex = 0;
+
+    function filterMarkers() {
+
 
         var selectedDate = document.getElementById('date').value.replace('-', '.');
         // Convertir la date en objet Date
@@ -85,14 +95,14 @@
         console.log("Date formatée :", formattedDate);
 
         // Charger les données CSV des villes de départ et d'arrivée
-        fetch('Classeur1.csv')
+        fetch('Classeur1_mis_a_jour.csv')
             .then(response => response.text())
             .then(data => {
                 // Convertir le contenu CSV en tableau de lignes
                 var rows = data.trim().split('\n');
                 // Parcourir chaque ligne (sauf l'en-tête)
                 for (var i = 1; i < rows.length; i++) {
-                    var row = rows[i].split(';');
+                    var row = rows[i].split(',');
                     // Extraire les 10 premiers caractères de la colonne de date
                     var rowDate = row[4].trim().substring(0, 10);
                     // Extraire les 10 premiers caractères de la date sélectionnée
@@ -102,6 +112,7 @@
                     // Vérifier si les 10 premiers caractères des dates correspondent
                     if (rowDate === formattedDate) {
                         // Récupérer les autres données de la ligne
+                        var ID = row[0].trim();
                         var depart = row[2].trim();
                         var arrivee = row[3].trim();
                         var debut = row[4].trim();
@@ -121,7 +132,7 @@
                         departPopupContent += "<tr><th>Ville d'arrivée:</th><td>" + arrivee + "</td></tr>";
                         departPopupContent += "<tr><th>Heure de départ:</th><td>" + debut + "</td></tr>";
                         departPopupContent += "<tr><th>Heure de de fin:</th><td>" + fin + "</td></tr>";
-
+                        departPopupContent += "<a href='https://partenaire.expedicar.com/transfer/"+ID+"/quotation' target='_blank'>LIEN</A></td></tr>";
                         arriveePopupContent += "</table>";
                         departMarker.bindPopup(departPopupContent);
 
@@ -147,9 +158,14 @@
                         cityListItem.textContent = arrivee + " (Arrivée)" + debut;
 
                         // Créer une ligne entre les points de départ et d'arrivée
-                        var polyline = L.polyline([randomDepartLocation, randomArriveeLocation], { color: 'black' }).addTo(map);
+                        var polyline = L.polyline([randomDepartLocation, randomArriveeLocation], { color: colors[colorIndex] }).addTo(map);
+
                     }
-                }
+
+
+            }
+            // Mettre à jour le compteur de couleur
+            colorIndex = (colorIndex + 1) % colors.length;
             
 
                     // Légende
