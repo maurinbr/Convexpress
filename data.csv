@@ -17,16 +17,6 @@ IDtrajet,Ville de Départ,Ville d'arrivée,A partir du,Jusqu'au,Distance / Duré
 733188,Lokeren (BE91),Antwerpen (BE20),07/03/2024 à 09:00,13/03/2024 à 15:00,42 km00h45,Se certifier au service complémentaire,51.1044488,3.9898689,51.2211097,4.3997081
 734701,Leuven (BE30),Antwerpen (BE20),11/03/2024 à 09:00,14/03/2024 à 15:00,63 km01h00,Se certifier au service complémentaire,50.879202,4.7011675,51.2211097,4.3997081
 733613,Eupen (BE47),Antwerpen (BE20),07/03/2024 à 09:00,12/03/2024 à 15:00,159 km02h00,Accéder,50.6305665,6.0312717,51.2211097,4.3997081
-733677,La louvière (BE71),Antwerpen (BE20),08/03/2024 à 09:00,12/03/2024 à 15:00,101 km01h30,Se certifier au service complémentaire,50.4791337,4.161348292428827,51.2211097,4.3997081
-733187,Kapellen (BE29),Antwerpen (BE20),07/03/2024 à 09:00,13/03/2024 à 15:00,18 km00h45,Se certifier au service complémentaire,51.3149455,4.4295354,51.2211097,4.3997081
-733541,Herve (BE46),Antwerpen (BE20),07/03/2024 à 09:00,13/03/2024 à 15:00,140 km01h45,Accéder,50.63916,5.7931012,51.2211097,4.3997081
-733682,Frameries (BE70),Antwerpen (BE20),08/03/2024 à 09:00,13/03/2024 à 15:00,127 km01h45,Se certifier au service complémentaire,,,51.2211097,4.3997081
-733189,Genk (BE36),Antwerpen (BE20),07/03/2024 à 09:00,13/03/2024 à 15:00,94 km01h15,Se certifier au service complémentaire,50.9654864,5.5001456,51.2211097,4.3997081
-733569,Dilbeek (BE17),Antwerpen (BE20),07/03/2024 à 09:00,12/03/2024 à 15:00,49 km01h00,Accéder,50.8480711,4.2662591,51.2211097,4.3997081
-733528,Drogenbos (BE16),Antwerpen (BE20),07/03/2024 à 09:00,12/03/2024 à 15:00,55 km01h00,Accéder,50.786532,4.3173542,51.2211097,4.3997081
-733182,Hasselt (BE35),Antwerpen (BE20),07/03/2024 à 09:00,13/03/2024 à 15:00,82 km01h15,Se certifier au service complémentaire,50.9303735,5.3378043,51.2211097,4.3997081
-734731,Rhode-saint-genèse (BE16),Antwerpen (BE20),12/03/2024 à 09:00,12/03/2024 à 15:00,63 km01h15,Accéder,50.74503,4.3463687,51.2211097,4.3997081
-733070,Brussel (BE10),Antwerpen (BE20),07/03/2024 à 09:00,13/03/2024 à 15:00,53 km01h00,Se certifier au service complémentaire,50.8550018,4.3512333761166175,51.2211097,4.3997081
 733678,Seraing (BE41),Antwerpen (BE20),08/03/2024 à 09:00,12/03/2024 à 15:00,138 km01h45,Se certifier au service complémentaire,50.6152381,5.5089437,51.2211097,4.3997081
 733498,Sint-niklaas (BE91),Antwerpen (BE20),07/03/2024 à 09:00,12/03/2024 à 15:00,23 km00h30,Accéder,51.1646685,4.1395124,51.2211097,4.3997081
 734986,Asse (BE17),Asse (BE17),13/03/2024 à 09:00,13/03/2024 à 10:45,5 km00h15,Accéder,50.9094333,4.2015646,50.9094333,4.2015646
@@ -113,8 +103,8 @@ IDtrajet,Ville de Départ,Ville d'arrivée,A partir du,Jusqu'au,Distance / Duré
 729598,Metz (FR57),Removille (FR88),13/03/2024 à 09:15 Rdv 9:15-10:15,13/03/2024 à 16:30 Rdv 14:30-16:30,116 km01h30,Se certifier au service complémentaire,49.1196964,6.1763552,48.3624,5.8401
 727556,Saint-cyprien (FR66),Rivesaltes (FR66),18/03/2024 à 09:00 Rdv 9:00-11:00,18/03/2024 à 16:00,28 km00h30,Se certifier au process client,44.8693315,1.0461817,42.7683568,2.8709277
 734872,La chapelle-sur-erdre (FR44),Saint-aignan-de-grand-lieu (FR44),18/03/2024 à 15:00 Rdv 15:00-17:00,18/03/2024 à 18:00,30 km00h30,Se certifier au process client,47.2996846,-1.5518632,47.1224436,-1.6345992
-733729,Sevremoine (FR49),Saint-aignan-de-grand-lieu (FR44),15/03/2024 à 09:00 Rdv 9:00-11:00,15/03/2024 à 15:05,68 km00h53,Se certifier au process client,47.08775155,-1.0821288289702786,47.1224436,-1.6345992
-734883,Montaigu-vendée (FR85),Saint-aignan-de-grand-lieu (FR44),18/03/2024 à 10:00 Rdv 10:00-12:00,18/03/2024 à 14:00,38 km00h33,Se certifier au process client,46.974115,-1.292745559745998,47.1224436,-1.6345992
+733729,Sevremoine (FR49),Saint-aignan-de-grand-lieu (FR44),15/03/2024 à 09:00 Rdv 9:00-11:00,15/03/2024 à 15:05,68 km00h53,Se certifier au process client,47.08775155,-1.082128,47.1224436,-1.6345992
+734883,Montaigu-vendée (FR85),Saint-aignan-de-grand-lieu (FR44),18/03/2024 à 10:00 Rdv 10:00-12:00,18/03/2024 à 14:00,38 km00h33,Se certifier au process client,46.974115,-1.292,47.1224436,-1.6345992
 730526,Les andelys (FR27),Saint-aignan-de-grand-lieu (FR44),18/03/2024 à 14:00,18/03/2024 à 16:00,433 km04h18,Se certifier au process client,49.2469193,1.4215534,47.1224436,-1.6345992
 734170,Miramas (FR13),Saint-clément-de-rivière (FR34),13/03/2024 à 08:30,13/03/2024 à 12:00 Rdv 10:00-12:00,119 km01h30,Accéder,43.582733,5.0025809,43.6843999,3.8466598
 734480,Attin (FR62),Saint-quentin (FR02),19/03/2024 à 12:00,19/03/2024 à 16:15 Rdv 14:15-16:15,176 km02h00,Accéder,50.4878746,1.7437837,49.8465253,3.2876843
