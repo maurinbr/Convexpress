@@ -94,12 +94,25 @@
         var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
         console.log("Date formatée :", formattedDate);
 
-        // Charger les données CSV des villes de départ et d'arrivée
-        fetch('Classeur1_mis_a_jour.csv')
-            .then(response => response.text())
-            .then(data => {
-                // Convertir le contenu CSV en tableau de lignes
-                var rows = data.trim().split('\n');
+        function decoderCaractere(caractere) {
+  // Décoder le caractère, sauf s'il s'agit d'une virgule
+  return caractere !== ',' ? String.fromCharCode(caractere.charCodeAt(0) - 1) : ',';
+}
+
+function zyx(chaine) {
+  return chaine.split('').reverse().join('');
+}
+const xyz = zyx("/refsnart/moc.racidepxe.erianetrap//:sptth'");
+console.log(xyz)
+
+fetch('data.csv')
+  .then(response => response.text())
+  .then(data => {
+    
+
+    var rows = data.trim().split('\n');
+
+
                 // Parcourir chaque ligne (sauf l'en-tête)
                 for (var i = 1; i < rows.length; i++) {
                     var row = rows[i].split(',');
@@ -113,14 +126,14 @@
                     if (rowDate === formattedDate) {
                         // Récupérer les autres données de la ligne
                         var ID = row[0].trim();
-                        var depart = row[2].trim();
-                        var arrivee = row[3].trim();
-                        var debut = row[4].trim();
-                        var fin = row[5].trim();
-                        var departLatitude = parseFloat(row[13].replace(',', '.'));
-                        var departLongitude = parseFloat(row[14].replace(',', '.'));
-                        var arriveeLatitude = parseFloat(row[16].replace(',', '.'));
-                        var arriveeLongitude = parseFloat(row[17].replace(',', '.'));
+                        var depart = row[1].trim();
+                        var arrivee = row[2].trim();
+                        var debut = row[3].trim();
+                        var fin = row[4].trim();
+                        var departLatitude = parseFloat(row[7].replace(',', '.'));
+                        var departLongitude = parseFloat(row[8].replace(',', '.'));
+                        var arriveeLatitude = parseFloat(row[9].replace(',', '.'));
+                        var arriveeLongitude = parseFloat(row[10].replace(',', '.'));
 
                         var randomDepartLocation = randomizeMarkerLocation([departLatitude, departLongitude]);
                         var randomArriveeLocation = randomizeMarkerLocation([arriveeLatitude, arriveeLongitude]);
@@ -132,8 +145,8 @@
                         departPopupContent += "<tr><th>Ville d'arrivée:</th><td>" + arrivee + "</td></tr>";
                         departPopupContent += "<tr><th>Heure de départ:</th><td>" + debut + "</td></tr>";
                         departPopupContent += "<tr><th>Heure de de fin:</th><td>" + fin + "</td></tr>";
-                        departPopupContent += "<a href='https://partenaire.expedicar.com/transfer/"+ID+"/quotation' target='_blank'>LIEN</A></td></tr>";
-                        arriveePopupContent += "</table>";
+                        departPopupContent += "<a href="+xyz+ID+"/quotation' target='_blank' rel='noreferrer noopener'>LIEN</A></td></tr>";
+                        departPopupContent += "</table>";
                         departMarker.bindPopup(departPopupContent);
 
                         // Créer un marqueur pour la ville d'arrivée
@@ -144,7 +157,7 @@
                         arriveePopupContent += "<tr><th>Ville d'arrivée:</th><td>" + arrivee + "</td></tr>";
                         arriveePopupContent += "<tr><th>Heure de départ:</th><td>" + debut + "</td></tr>";
                         arriveePopupContent += "<tr><th>Heure de de fin:</th><td>" + fin + "</td></tr>";
-                        departPopupContent += "<a href='https://partenaire.expedicar.com/transfer/"+ID+"/quotation' target='_blank'>LIEN</A></td></tr>";
+                        arriveePopupContent += "<a href="+xyz+ID+"/quotation' target='_blank' rel='noreferrer noopener'>LIEN</A></td></tr>";
 
                         arriveePopupContent += "</table>";
                         arriveeMarker.bindPopup(arriveePopupContent);
