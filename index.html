@@ -15,14 +15,25 @@
             padding: 8px;
             text-align: left;
         }
+        #filter {
+        width: 100%; /* Ajustez la largeur comme nécessaire */
+        padding: 20px; /* Ajoute plus d'espace à l'intérieur du bloc */
+        margin: auto; /* Centre le bloc si la largeur est inférieure à 100% */
+        font-size: 16px; /* Ajuste la taille du texte */
+        }
+
+        #filter input, #filter button {
+            font-size: 16px; /* Ajuste la taille du texte des inputs et des boutons */
+            margin: 5px; /* Ajoute un peu d'espace autour des inputs et des boutons */
+            padding: 10px; /* Rend les inputs et les boutons plus grands */
+        }
     </style>
 </head>
 <body>
 
     <div id="filter">
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
-        <button onclick="filterMarkers()">Filtrer</button>
+        <input type="date" id="date" name="date" onchange="filterMarkers()">
         <button onclick="clearpins()">Effacer</button>
     </div>
     <div id="map"></div>
