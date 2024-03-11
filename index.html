@@ -141,10 +141,10 @@ fetch('data.csv')
                         var arrivee = row[2].trim();
                         var debut = row[3].trim();
                         var fin = row[4].trim();
-                        var departLatitude = parseFloat(row[7].replace(',', '.'));
-                        var departLongitude = parseFloat(row[8].replace(',', '.'));
-                        var arriveeLatitude = parseFloat(row[9].replace(',', '.'));
-                        var arriveeLongitude = parseFloat(row[10].replace(',', '.'));
+                        var departLatitude = parseFloat(row[5].replace(',', '.'));
+                        var departLongitude = parseFloat(row[6].replace(',', '.'));
+                        var arriveeLatitude = parseFloat(row[7].replace(',', '.'));
+                        var arriveeLongitude = parseFloat(row[8].replace(',', '.'));
 
                         var randomDepartLocation = randomizeMarkerLocation([departLatitude, departLongitude]);
                         var randomArriveeLocation = randomizeMarkerLocation([arriveeLatitude, arriveeLongitude]);
